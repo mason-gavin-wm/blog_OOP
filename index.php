@@ -54,53 +54,62 @@ $database->execute();
 $database->query('SELECT * FROM blog_posts');
 $rows = $database->resultset();
 
-
 ?>
-<h1>Add Post</h1>
+<head>
+    <title>
+        MY BLOG! | TITLE GOES HERE!
+    </title>
 
-        <form method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
+    <link rel="stylesheet" type="text/css" href="style.css">
 
-            <label>Post ID</label><br />
+</head>
 
-                <input type="text" name="id" placeholder="Specify ID"/> <br /> <br />
+<nav>
+    <ul>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="addPost.php">Add Post</a></li>
+        <li><a href="about.html">About</a></li>
+        <li style="float:right"><a href="profile.php">Profile</a></li>
+    </ul>
+</nav>
+<br />
 
-            <label>Post Title</label><br />
-
-                <input type="text" name="title" placeholder="Add a Title..." /><br /><br />
-
-            <label>Post Body</label><br />
-
-                <textarea name="post"></textarea><br /><br />
-
-            <input type="submit" name="submit" value="Submit" />
-
-        </form>
+<div class="container">
 
 
-<h1>Posts</h1>
+<h1 id="posts" style="margin-left:5%;">Posts</h1>
 
         <div>
 
             <?php foreach($rows as $row) : ?>
 
-            <div>
+                        <div>
 
-                <h3> <?php echo $row['title']; ?></h3>
+                                <h3 style="margin-left:13%;"> <?php echo $row['title']; ?></h3>
 
-                <p> <?php echo $row['post']; ?></p>
+                            <p style="margin-left:15%;"> <?php echo $row['post']; ?></p>
+
+                        </div>
 
                 <br />
 
-                    <form method="post" action="<?php $_SERVER['PHP_SELF']; ?> ">
+
+                    <form method="post" action="<?php $_SERVER['PHP_SELF']; ?>" ">
 
                         <input type="hidden" name="delete_id" value="<?php echo $row['id']; ?>" />
 
-                        <input type="submit" name="delete" value="Delete" />
+                        <button class="button" type="submit" name="delete" value="Delete" >Delete</button>
 
                     </form>
+
+                
 
             </div>
 
             <?php endforeach; ?>
 
         </div>
+
+
+
+</div>
