@@ -46,7 +46,7 @@ $database->execute();
 
     if($database->lastInsertID()){
 
-        echo'<p>Post Added!</p>';
+        echo'<p>Click<a href="index.php">Here!</a> To see your post</p>';
     }
 
 }
@@ -68,41 +68,58 @@ $rows = $database->resultset();
     <ul>
         <li><a href="index.php">Home</a></li>
         <li><a href="addPost.php">Add Post</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="aboutus.html">About</a></li>
         <li style="float:right"><a href="profile.php">Profile</a></li>
     </ul>
 </nav>
 <br />
 
-<div class="container">
+<div class="container" >
+
+    <div style="border: 3px dashed #873f44; width:22%; height:50%; margin-left: 1090px; position:fixed;">
+
+        <h3 style="text-align: center;">What is Lorem Ipsum?</h3>
+
+        <p style=" margin-left:4px;">&nbsp;&nbsp;&nbsp;Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+        </p>
+        <p style=" margin-left:4px;">
+            &nbsp;&nbsp;&nbsp;When an unknown printer took a galley of type and scrambled it to make a type
+            specimen book.
+        </p>
 
 
-<h1 id="posts" style="margin-left:5%;">Posts</h1>
+    </div>
+
+
+<h1 id="posts" style="margin-left:5%; font-size:46px;">Blog Posts</h1>
 
         <div>
 
-            <?php foreach($rows as $row) : ?>
 
-                        <div>
+            <?php foreach($rows as $row) : ?><br />
 
-                                <h3 style="margin-left:13%;"> <?php echo $row['title']; ?></h3>
+                        <div id="post_container" style="border-radius: 3px;border: 4px solid rgba(48, 113, 211, 0.98);">
 
-                            <p style="margin-left:15%;"> <?php echo $row['post']; ?></p>
+
+                            <h3 style="position: absolute; margin-left:5px;">Title:</h3>
+
+                                    <h3 style="margin-left:5%; position: absolute"> <?php echo $row['title']; ?></h3>
+                            <br />
+
+                                    <p style="margin-left:15%;">&nbsp;&nbsp;&nbsp; <?php echo $row['post']; ?></p>
+
+                                <form method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
+
+                                    <input type="hidden" name="delete_id" value="<?php echo $row['id']; ?>"/>
+
+                                    <button class="button" type="submit" name="delete" value="Delete">Delete</button>
 
                         </div>
+    
+                <br /><br />
 
-                <br />
-
-
-                    <form method="post" action="<?php $_SERVER['PHP_SELF']; ?>" ">
-
-                        <input type="hidden" name="delete_id" value="<?php echo $row['id']; ?>" />
-
-                        <button class="button" type="submit" name="delete" value="Delete" >Delete</button>
-
-                    </form>
-
-                
+            <hr>
 
             </div>
 
@@ -112,4 +129,5 @@ $rows = $database->resultset();
 
 
 
-</div>
+
+

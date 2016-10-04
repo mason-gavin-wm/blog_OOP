@@ -46,7 +46,7 @@ if(@$post['submit']){
 
     if($database->lastInsertID()){
 
-        echo'<p>Post Added!</p>';
+        echo'<p>Post Added, click <a href="index.php">here!</a> to see it</p>';
     }
 
 }
@@ -68,7 +68,7 @@ $rows = $database->resultset();
     <ul>
         <li><a href="index.php">Home</a></li>
         <li><a href="addPost.php">Add Post</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="aboutus.html">About</a></li>
         <li style="float:right"><a href="profile.php">Profile</a></li>
     </ul>
 </nav>
@@ -97,6 +97,8 @@ $rows = $database->resultset();
     </div>
 
 
+</div>
 
+<div style="background-color: #333; height:65px;">
 
 </div>
